@@ -2,6 +2,7 @@
 title: Post 3 Tutle
 category: canada
 url: post3-link
+image: ../images/kittens.jpg
 ---
 
 # Post 3

@@ -2,6 +2,7 @@
 title: Post 1 Tutle
 category: russia
 url: post1-link
+image: ../images/kittens.jpg
 ---
 
 # Post 1

@@ -1,6 +1,7 @@
 import * as React from 'react'
 import Layout from './layout'
 import { graphql, Link } from 'gatsby'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 
 const BlogPage = ({ data }) => {
   const { nodes } = data.allMarkdownRemark
@@ -9,8 +10,10 @@ const BlogPage = ({ data }) => {
       <ul>
       {
         nodes.map(node => {
-          const { category, url, title } = node.frontmatter;
+          const { category, url, title, image } = node.frontmatter;
+          const img = getImage(image);
           return (<li key={node.frontmatter.url}>
+            <GatsbyImage image={img} alt={title} />
             <Link key={node.id} to={`/blogs/${category}/${url}`}>{title}</Link>
           </li> )
         })
@@ -29,6 +32,11 @@ export const query = graphql`
           category
           title
           url
+          image {
+            childImageSharp {
+              gatsbyImageData(width: 200, formats: AUTO, placeholder: BLURRED)
+            }
+          }
         }
       }
     }
