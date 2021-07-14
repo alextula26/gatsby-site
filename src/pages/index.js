@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
+import { StaticImage } from "gatsby-plugin-image";
 
 // styles
 const pageStyles = {
@@ -130,6 +131,14 @@ const links = [
 const IndexPage = () => {
   return (
     <main style={pageStyles}>
+      <StaticImage
+        alt="My kittens"
+        src="../images/kittens.jpg"
+        width={800}
+        layout="constrained"
+        style={{border: '10px solid red'}}
+        placeholder="oh, my like kitten"
+      />
       <title>Index Page</title>
       <h1 style={headingStyles}>
         Congratulations
