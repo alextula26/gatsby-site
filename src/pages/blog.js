@@ -7,9 +7,9 @@ const BlogPage = ({ data }) => {
     <Layout pageTitle="My Blog Posts">
       <ul>
       {
-        data.allFile.nodes.map(node => (
-          <li key={node.name}>
-            {node.name}
+        data.allMarkdownRemark.nodes.map(node => (
+          <li key={node.frontmatter.url}>
+            {node.frontmatter.title}
           </li>
         ))
       }
@@ -20,9 +20,14 @@ const BlogPage = ({ data }) => {
 
 export const query = graphql`
   query {
-    allFile {
+    allMarkdownRemark {
       nodes {
-        name
+        html
+        frontmatter {
+          category
+          title
+          url
+        }
       }
     }
   }
