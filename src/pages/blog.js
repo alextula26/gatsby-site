@@ -1,17 +1,19 @@
 import * as React from 'react'
 import Layout from './layout'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 
 const BlogPage = ({ data }) => {
+  const { nodes } = data.allMarkdownRemark
   return (
     <Layout pageTitle="My Blog Posts">
       <ul>
       {
-        data.allMarkdownRemark.nodes.map(node => (
-          <li key={node.frontmatter.url}>
-            {node.frontmatter.title}
-          </li>
-        ))
+        nodes.map(node => {
+          const { category, url, title } = node.frontmatter;
+          return (<li key={node.frontmatter.url}>
+            <Link key={node.id} to={`/blogs/${category}/${url}`}>{title}</Link>
+          </li> )
+        })
       }
       </ul>
     </Layout>
@@ -19,10 +21,10 @@ const BlogPage = ({ data }) => {
 }
 
 export const query = graphql`
-  query {
+  query BlogPage {
     allMarkdownRemark {
       nodes {
-        html
+        id
         frontmatter {
           category
           title

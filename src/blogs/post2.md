@@ -1,6 +1,6 @@
 ---
 title: Post 2 Tutle
-category: USA
+category: usa
 url: post2-link
 ---
 
