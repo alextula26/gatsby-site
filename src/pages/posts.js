@@ -3,10 +3,10 @@ import Layout from '../components/Layout'
 import { graphql, Link } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 
-const BlogPage = ({ data }) => {
+const PostPage = ({ data }) => {
   const { nodes } = data.allMarkdownRemark
   return (
-    <Layout pageTitle="My Blog Posts">
+    <Layout pageTitle="My Posts">
       <ul>
       {
         nodes.map(node => {
@@ -14,7 +14,7 @@ const BlogPage = ({ data }) => {
           const img = getImage(image);
           return (<li key={node.frontmatter.url}>
             <GatsbyImage image={img} alt={title} />
-            <Link key={node.id} to={`/blogs/${category}/${url}`}>{title}</Link>
+            <Link key={node.id} to={`/posts/${category}/${url}`}>{title}</Link>
           </li> )
         })
       }
@@ -24,7 +24,7 @@ const BlogPage = ({ data }) => {
 }
 
 export const query = graphql`
-  query BlogPage {
+  query PostPage {
     allMarkdownRemark {
       nodes {
         id
@@ -42,4 +42,4 @@ export const query = graphql`
     }
   }
 `
-export default BlogPage
+export default PostPage

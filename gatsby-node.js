@@ -17,8 +17,8 @@ exports.createPages = async ({ graphql, actions }) => {
     data.allMarkdownRemark.nodes.forEach(node => {
         const { url, category } = node.frontmatter;
         actions.createPage({
-            path: `/blogs/${category}/${url}`,
-            component: path.resolve('./src/templates/single-blog.js'),
+            path: `/posts/${category}/${url}`,
+            component: path.resolve('./src/templates/single-post.js'),
             context: { url }
         })
     })

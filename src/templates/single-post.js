@@ -3,13 +3,13 @@ import { graphql } from 'gatsby'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Layout from '../components/Layout'
 
-const SingleBlog = ({ data }) => {
+const SinglePost = ({ data }) => {
   const { html } = data.markdownRemark;
   const { title, image } = data.markdownRemark.frontmatter;
   const img = getImage(image);
 
   return (
-    <Layout pageTitle="Single  Blog">
+    <Layout pageTitle="Single Post">
       <div>
           <h1>{title}</h1>
           <div>
@@ -22,7 +22,7 @@ const SingleBlog = ({ data }) => {
 }
 
 export const query = graphql`
-  query BlogQuery($url: String) {
+  query PostQuery($url: String) {
     markdownRemark(frontmatter: {url: {eq: $url}}) {
       html
       frontmatter {
@@ -39,4 +39,4 @@ export const query = graphql`
   }
 `
 
-export default SingleBlog
+export default SinglePost

@@ -2,7 +2,7 @@
 title: Post 2 Tutle
 category: usa
 url: post2-link
-image: ../images/kittens.jpg
+image: ../../images/kittens.jpg
 ---
 
 # Post 2

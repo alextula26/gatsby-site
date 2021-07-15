@@ -1,13 +1,12 @@
 ---
-title: Post 1 Tutle
-category: russia
-url: post1-link
-image: ../images/kittens.jpg
+descriptions: News 3
+slag: news2-link
+picture: ../../images/kittens.jpg
 ---
 
-# Post 1
-## Descriptions Post 1
-### Text Post 1
+# News 2
+## Descriptions News 2
+### Text News 2
 
 **Lorem Ipsum - это текст-"рыба"**, часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.
 
