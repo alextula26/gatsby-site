@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { Link, graphql, useStaticQuery } from 'gatsby'
 import Header from '../components/Header'
 import {

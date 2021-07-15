@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import Layout from '../components/Layout'
 import { graphql, Link } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
@@ -25,7 +25,9 @@ const PostPage = ({ data }) => {
 
 export const query = graphql`
   query PostPage {
-    allMarkdownRemark {
+    allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/contents/posts/" } }
+    ) {
       nodes {
         id
         frontmatter {
