@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: "https://www.yourdomain.tld",
+    siteUrl: "http://localhost:8000",
     title: "Gatsby Site 1111",
     description: "First Gatsby site"
   },
@@ -10,6 +10,12 @@ module.exports = {
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
     "gatsby-transformer-remark",
+    {
+      resolve: "gatsby-plugin-sitemap",
+      options: {
+        output: `/my-cool-sitemap.xml`,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -23,6 +29,6 @@ module.exports = {
         name: `blogs`,
         path: `${__dirname}/src/blogs`,
       }
-    },
+    }, 
   ],
 };

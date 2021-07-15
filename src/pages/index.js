@@ -5,6 +5,7 @@ import Layout from '../components/Layout'
 const IndexPage = () => {
   return (
     <Layout pageTitle="Home Page">
+      <p>Text</p>
       <StaticImage
         alt="My kittens"
         src="../images/kittens.jpg"
