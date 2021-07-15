@@ -14,7 +14,7 @@ const Header = () => {
   `);
   return (
     <header>
-      <h1>{ data.site.siteMetadata.title }</h1>
+      <h1 style={{textAlign: 'center'}}>{ data.site.siteMetadata.title }</h1>
     </header>
   )
 };
