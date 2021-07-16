@@ -3,6 +3,7 @@ title: Post 2 Tutle
 category: usa
 url: post2-link
 image: ../../images/kittens.jpg
+template: post
 ---
 
 # Post 2
