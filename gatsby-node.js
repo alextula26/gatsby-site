@@ -9,7 +9,6 @@ exports.createPages = async ({ graphql, actions }) => {
         nodes {
           frontmatter {
             category
-            title
             url
           }
         }
@@ -17,7 +16,19 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `);
 
-  console.log(posts.data.allMarkdownRemark.nodes)
+  const news = await graphql(`
+    query NewsListQuery {
+      allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/contents/news/" } }
+      ) {
+        nodes {
+          frontmatter {
+            slug
+          }
+        }
+      }
+    }
+  `);  
 
   posts.data.allMarkdownRemark.nodes.forEach((node) => {
     const { url, category } = node.frontmatter;
@@ -27,4 +38,13 @@ exports.createPages = async ({ graphql, actions }) => {
       context: { url },
     });
   });
+
+  news.data.allMarkdownRemark.nodes.forEach((node) => {
+    const { slug } = node.frontmatter;
+    actions.createPage({
+      path: `/news/${slug}`,
+      component: path.resolve('./src/templates/single-news.js'),
+      context: { slug },
+    });
+  });  
 };

@@ -3,18 +3,19 @@ import Layout from '../components/Layout'
 import { graphql, Link } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 
-const PostsPage = ({ data }) => {
+const NewsListPage = ({ data }) => {
   const { nodes } = data.allMarkdownRemark
   return (
     <Layout pageTitle="My Posts">
       <ul>
       {
         nodes.map(node => {
-          const { category, url, title, image } = node.frontmatter;
-          const img = getImage(image);
+          const { name, descriptions, slug, picture } = node.frontmatter;
+          const img = getImage(picture);
           return (<li key={node.frontmatter.url}>
-            <GatsbyImage image={img} alt={title} />
-            <Link key={node.id} to={`/posts/${category}/${url}`}>{title}</Link>
+            <GatsbyImage image={img} alt={name} />
+            <Link key={node.id} to={`/news/${slug}`}>{name}</Link>
+            <p>{descriptions}</p>
           </li> )
         })
       }
@@ -24,17 +25,17 @@ const PostsPage = ({ data }) => {
 }
 
 export const query = graphql`
-  query PostsPageQuery {
+  query NewsListPageQuery {
     allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/contents/posts/" } }
+      filter: { fileAbsolutePath: { regex: "/contents/news/" } }
     ) {
       nodes {
         id
         frontmatter {
-          category
-          title
-          url
-          image {
+          name
+          descriptions
+          slug
+          picture {
             childImageSharp {
               gatsbyImageData(width: 200, formats: AUTO, placeholder: BLURRED)
             }
@@ -44,4 +45,4 @@ export const query = graphql`
     }
   }
 `
-export default PostsPage
+export default NewsListPage

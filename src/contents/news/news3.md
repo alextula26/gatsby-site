@@ -1,7 +1,9 @@
 ---
-descriptions: News 3
-slag: news3-link
-picture: ../../images/kittens.jpg
+name: News 3 name
+descriptions: News 3 descriptions
+slug: news3-link
+picture: ../../images/kittens2.jpg
+template: news
 ---
 
 # News 3

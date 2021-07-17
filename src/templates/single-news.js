@@ -5,15 +5,15 @@ import Layout from '../components/Layout'
 
 const SingleNews = ({ data }) => {
   const { html } = data.markdownRemark;
-  const { title, image } = data.markdownRemark.frontmatter;
-  const img = getImage(image);
+  const { name, picture } = data.markdownRemark.frontmatter;
+  const img = getImage(picture);
 
   return (
     <Layout pageTitle="Single News">
       <div>
-          <h1>{title}</h1>
+          <h1>{name}</h1>
           <div>
-            <GatsbyImage image={img} alt={title} />
+            <GatsbyImage image={img} alt={name} />
           </div>
           <div dangerouslySetInnerHTML={{ __html: html }} />
       </div>
@@ -22,13 +22,13 @@ const SingleNews = ({ data }) => {
 }
 
 export const query = graphql`
-  query NewsQuery($url: String) {
-    markdownRemark(frontmatter: {url: {eq: $url}}) {
+  query NewsQuery($slug: String) {
+    markdownRemark(frontmatter: {slug: {eq: $slug}}) {
       html
       frontmatter {
-        title
-        url
-        image {
+        name
+        slug
+        picture {
           childImageSharp {
             gatsbyImageData(width: 400)
           }
