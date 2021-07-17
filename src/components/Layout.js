@@ -1,6 +1,6 @@
-import React from 'react'
-import { Link, graphql, useStaticQuery } from 'gatsby'
-import Header from '../components/Header'
+import React from 'react';
+import { Link, graphql, useStaticQuery } from 'gatsby';
+import Header from './Header';
 import {
   container,
   heading,
@@ -8,7 +8,7 @@ import {
   navLinkItem,
   navLinkText,
   siteTitle,
-} from '../css/layout.module.css'
+} from '../css/layout.module.css';
 
 const Layout = ({ pageTitle, children }) => {
   const data = useStaticQuery(graphql`
@@ -19,13 +19,13 @@ const Layout = ({ pageTitle, children }) => {
       }
     }
   }
-`)
+`);
   return (
     <>
       <Header />
       <main className={container}>
         <title>{pageTitle} | {data.site.siteMetadata.title}</title>
-        <p className={siteTitle}>{data.site.siteMetadata.title}</p>     
+        <p className={siteTitle}>{data.site.siteMetadata.title}</p>
         <nav>
           <ul className={navLinks}>
             <li className={navLinkItem}>
@@ -47,13 +47,13 @@ const Layout = ({ pageTitle, children }) => {
               <Link to="/news" className={navLinkText}>
                 News
               </Link>
-            </li>               
+            </li>
           </ul>
         </nav>
         <h1 className={heading}>{pageTitle}</h1>
         {children}
       </main>
     </>
-  )
-}
-export default Layout
+  );
+};
+export default Layout;

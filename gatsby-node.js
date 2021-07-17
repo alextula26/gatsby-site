@@ -28,7 +28,7 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
     }
-  `);  
+  `);
 
   posts.data.allMarkdownRemark.nodes.forEach((node) => {
     const { url, category } = node.frontmatter;
@@ -46,5 +46,5 @@ exports.createPages = async ({ graphql, actions }) => {
       component: path.resolve('./src/templates/single-news.js'),
       context: { slug },
     });
-  });  
+  });
 };

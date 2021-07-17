@@ -1,28 +1,30 @@
-import React from 'react'
-import Layout from '../components/Layout'
-import { graphql, Link } from 'gatsby'
-import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import React from 'react';
+import { graphql, Link } from 'gatsby';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import Layout from '../components/Layout';
 
 const NewsListPage = ({ data }) => {
-  const { nodes } = data.allMarkdownRemark
+  const { nodes } = data.allMarkdownRemark;
   return (
     <Layout pageTitle="My Posts">
       <ul>
       {
-        nodes.map(node => {
-          const { name, descriptions, slug, picture } = node.frontmatter;
+        nodes.map((node) => {
+          const {
+            name, descriptions, slug, picture
+          } = node.frontmatter;
           const img = getImage(picture);
           return (<li key={node.frontmatter.url}>
             <GatsbyImage image={img} alt={name} />
             <Link key={node.id} to={`/news/${slug}`}>{name}</Link>
             <p>{descriptions}</p>
-          </li> )
+          </li>);
         })
       }
       </ul>
     </Layout>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query NewsListPageQuery {
@@ -44,5 +46,5 @@ export const query = graphql`
       }
     }
   }
-`
-export default NewsListPage
+`;
+export default NewsListPage;

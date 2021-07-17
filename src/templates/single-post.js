@@ -1,7 +1,7 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import Layout from '../components/Layout'
+import React from 'react';
+import { graphql } from 'gatsby';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import Layout from '../components/Layout';
 
 const SinglePost = ({ data }) => {
   const { html } = data.markdownRemark;
@@ -18,8 +18,8 @@ const SinglePost = ({ data }) => {
           <div dangerouslySetInnerHTML={{ __html: html }} />
       </div>
     </Layout>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query PostQuery($url: String) {
@@ -37,6 +37,6 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 
-export default SinglePost
+export default SinglePost;

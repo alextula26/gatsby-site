@@ -1,41 +1,41 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: "http://localhost:8000",
-    title: "Gatsby Site 1111",
-    description: "First Gatsby site"
+    siteUrl: 'http://localhost:8000',
+    title: 'Gatsby Site 1111',
+    description: 'First Gatsby site'
   },
   plugins: [
-    "gatsby-plugin-gatsby-cloud",
-    "gatsby-plugin-image",
-    "gatsby-transformer-sharp",
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-remark",
+    'gatsby-plugin-gatsby-cloud',
+    'gatsby-plugin-image',
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-remark',
     {
-      resolve: "gatsby-plugin-sitemap",
+      resolve: 'gatsby-plugin-sitemap',
       options: {
-        output: `/my-cool-sitemap.xml`,
+        output: '/my-cool-sitemap.xml',
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `images`,
+        name: 'images',
         path: `${__dirname}/src/images`,
       },
     },
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `posts`,
+        name: 'posts',
         path: `${__dirname}/src/contents/posts`,
       }
     },
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `news`,
+        name: 'news',
         path: `${__dirname}/src/contents/news`,
       }
-    },     
+    },
   ],
 };
