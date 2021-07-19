@@ -1,6 +1,9 @@
 'use strict';
 
 const path = require('path');
+const _ = require('lodash');
+
+const { paginate } = require('gatsby-awesome-pagination');
 const siteConfig = require('../../config');
 
 module.exports = async (graphql, actions) => {
@@ -9,27 +12,32 @@ module.exports = async (graphql, actions) => {
   const result = await graphql(`
     {
       allMarkdownRemark(
-        filter: { frontmatter: { template: { eq: "post" }, draft: { ne: true } } }
-      ) { totalCount }
+        filter: {frontmatter: {template: {eq: "post"}, draft: {ne: true}}}
+      ) {
+        totalCount
+        edges {
+          node {
+            frontmatter {
+              slug
+            }
+            id
+          }
+        }
+      }
     }
   `);
 
   const { postsPerPage } = siteConfig;
-  const numPages = Math.ceil(result.data.allMarkdownRemark.totalCount / postsPerPage);
+  const posts = _.get(result, 'data.allMarkdownRemark.edges');
 
-  for (let i = 0; i < numPages; i += 1) {
-    createPage({
-      path: i === 0 ? '/' : `/page/${i}`,
-      component: path.resolve('./src/templates/index-template.js'),
-      context: {
-        currentPage: i,
-        postsLimit: postsPerPage,
-        postsOffset: i * postsPerPage,
-        prevPagePath: i <= 1 ? '/' : `/page/${i - 1}`,
-        nextPagePath: `/page/${i + 1}`,
-        hasPrevPage: i !== 0,
-        hasNextPage: i !== numPages - 1
-      }
-    });
-  }
+  paginate({
+    createPage,
+    items: posts,
+    itemsPerPage: postsPerPage,
+    itemsPerFirstPage: 4,
+    component: path.resolve('./src/templates/index-template.js'),
+    pathPrefix: ({ pageNumber }) => (
+      (pageNumber === 0) ? '/' : '/page'
+    )
+  });
 };
